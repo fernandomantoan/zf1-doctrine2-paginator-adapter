@@ -24,33 +24,15 @@ After having the QueryBuilder instantiated and populated, just pass it to the Ad
 	$this->view->entries = $paginator;
 
 In your view you can use the following code to show the paginator:
-	<table>
-				<thead>
-					<tr>
-						<th scope="col">Id</th>
-						<th scope="col">Description</th>
-					</tr>
-				</thead>
-				<tfoot>
-					<tr>
-						<td colspan="2"><?php echo $this->paginationControl($this->entries, 'sliding', 'pagination.phtml'); ?></td>
-					</tr>
-				</tfoot>
-				<tbody>
-					<?php if (sizeof($this->entries) == 0): ?>
-					<tr>
-						<td colspan="2">No entries found</td>
-					</tr>
-					<?php else: ?>
-					<?php foreach ($this->entries as $entry): ?>
-					<tr>
-						<td><?php echo $entry->getId(); ?></td>
-						<td><?php echo $entry->getDescription(); ?></td>
-					</tr>
-					<?php endforeach; ?>
-					<?php endif; ?>
-				</tbody>
-	</table>
+
+	<?php if (sizeof($this->entries) == 0): ?>
+	No entries found
+	<?php else: ?>
+	    <?php foreach ($this->entries as $entry): ?>
+	    //... your code
+	    <?php endforeach; ?>
+	    <?php echo $this->paginationControl($this->entries, 'sliding', 'pagination.phtml'); ?>
+	<?php endif; ?>
 
 The project comes with a pagination.phtml file, which is as follows:
 
