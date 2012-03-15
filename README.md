@@ -8,7 +8,7 @@ This project needs the [ZendFramework1-Doctrine2 integration](http://github.com/
 
 ## Usage
 
-Using the adapter is a very common process. First of all a Doctrine QueryBuilder object must be created, just like the following sample:
+Using the adapter is a very easy process. First of all a Doctrine QueryBuilder object must be created, just like the following sample:
 
 	$queryBuilder = $this->_entityManager->createQueryBuilder();
 	$queryBuilder->select('e')
@@ -34,35 +34,7 @@ In your view you can use the following code to show the paginator:
 	    <?php echo $this->paginationControl($this->entries, 'sliding', 'pagination.phtml'); ?>
 	<?php endif; ?>
 
-The project comes with a pagination.phtml file, which is as follows:
-
-	<?php if ($this->pageCount): ?>
-	<div class="paginationControl">
-	<!-- Previous page link -->
-	<?php if (isset($this->previous)): ?>
-		<a href="<?php echo $this->url(array('page' => $this->previous)); ?>">&lt; Previous</a>
-	<?php else: ?>
-		<span class="disabled">&lt; Previous</span> 
-	<?php endif; ?>
-	&nbsp;&nbsp;
-	<!-- Numbered page links -->
-	Page <b><?php echo $this->current; ?></b> of <?php echo $this->pageCount; ?>
-	<?php foreach ($this->pagesInRange as $page): ?>
-		<?php if ($page != $this->current): ?>
-			<a href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a>
-		<?php else: ?>
-			<span><?php echo $page; ?></span>
-		<?php endif; ?>
-	<?php endforeach; ?>
-	&nbsp;&nbsp;
-	<!-- Next page link -->
-	<?php if (isset($this->next)): ?>
-		<a href="<?php echo $this->url(array('page' => $this->next)); ?>">Next &gt;</a>
-	<?php else: ?>
-		<span class="disabled">Next &gt;</span>
-	<?php endif; ?>
-	</div>
-	<?php endif; ?>
+The project comes with a pagination.phtml file in application/views/scripts/pagination.html, you can customize it if you want.
 
 ## Contribute
 
